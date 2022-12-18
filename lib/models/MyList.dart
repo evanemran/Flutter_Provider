@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
+
 import 'MyItem.dart';
 
-class MyList {
+class MyList extends ChangeNotifier{
   List<MyItem> list = [
     MyItem(0, "Iron Man", false),
     MyItem(1, "Iron Man 2", false),
@@ -31,6 +33,17 @@ class MyList {
   }
   
   void addToFav(int id) {
-    list.where((element) => element.id == )
+    for (var element in list) {
+      if(element.id == id) {
+        if(element.isFavorite) {
+          element.isFavorite = false;
+          notifyListeners();
+        }
+        else {
+          element.isFavorite = true;
+          notifyListeners();
+        }
+      }
+    }
   }
 }

@@ -1,21 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider/models/MyList.dart';
 import 'package:provider/provider.dart';
 
 import '../models/MyItem.dart';
 
 class HomeWidget extends StatelessWidget {
-  HomeWidget({Key? key}) : super(key: key);
-
-  MyItem myItem = MyItem(0, "", false);
-
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var mList = Provider.of<MyList>(context).getList();
     return ListView.builder(
-        itemCount: myItem.list.length,
+        itemCount: mList.length,
         itemBuilder: (BuildContext context, int position) {
-          var item = myItem.list[position];
+          var item = mList[position];
 
           return ListTile(
             title: Text(item.name, style: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),),
@@ -23,7 +22,7 @@ class HomeWidget extends StatelessWidget {
             trailing: TextButton(
               child: Text(item.isFavorite ? "Added" : "Add", style: TextStyle(color: item.isFavorite ? Colors.black54 : Colors.red),),
               onPressed: () {
-                Provider.of<MyItem>(context, listen: false).addToFavorite();
+                Provider.of<MyList>(context, listen: false).addToFav(item.id);
               },
             ),
           );

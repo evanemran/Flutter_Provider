@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 child: TabBarView(
                   controller: _tabController,
                   children: [
-                    Center(
+                    const Center(
                       child: HomeWidget(),
                     ),
                     Center(
