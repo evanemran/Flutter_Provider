@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               labelColor: Colors.white,
               unselectedLabelColor: Colors.black,
               tabs: const [
-                Tab(text: "Home",),
+                Tab(text: "Movies",),
                 Tab(text: "Saved",),
               ],
             ),
@@ -56,8 +56,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               child: Padding(padding: const EdgeInsets.only(top: 10),
                 child: TabBarView(
                   controller: _tabController,
-                  children: [
-                    const Center(
+                  children: const [
+                    Center(
                       child: HomeWidget(),
                     ),
                     Center(
